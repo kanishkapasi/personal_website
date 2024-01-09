@@ -31,7 +31,7 @@ export default function SideBar() {
       </div>
 
       <div className="p-5">
-        <p className="text-white text-sm mt-4 lg:text-lg">
+        <p className="text-white text-sm mt-4 lg:text-md">
           I'm{" "}
           <span
             style={{
