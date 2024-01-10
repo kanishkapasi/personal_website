@@ -1,59 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
-import interiorOne from "../../public/interiror_site/desktop-view.png";
-import interiroTwo from "../../public/interiror_site/desktopview2.png";
-import interiorThree from "../../public/interiror_site/desktopview3.png";
-import interiorFour from "../../public/interiror_site/desktopview4.png";
-import interiorFive from "../../public/interiror_site/desktopview5.png";
-import interiorSix from "../../public/interiror_site/mobileView.png";
-import interiorSeven from "../../public/interiror_site/mobileview2.png";
-
-const data = [
-  {
-    id: "1",
-    description: "",
-    image: [
-      {
-        imageOne: interiorOne,
-      },
-      {
-        imageTwo: interiroTwo,
-      },
-      {
-        imageThree: interiorThree,
-      },
-      {
-        imageFour: interiorFour,
-      },
-      {
-        imageFive: interiorFive,
-      },
-      {
-        imageSix: interiorSix,
-      },
-      {
-        imageSeven: interiorSeven,
-      },
-    ],
-  },
-];
+import data from "../data/data";
 
 export default function RecentPosts() {
+  const settings = {
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
-    <div className="lg:w-[95%] w-[80%] mx-auto bg-[#0e0d0d] mt-8 rounded-[20px] h-[30vh]">
-      <h1>posts</h1>
-      {data.map((e) => {
-        return (
-          <div>
-            <Link href={"/recent_post/" + e.id}>
-              <Image
-                src={e.image[0].imageOne}
-                className="w-[300px] object-cover"
-              />
-            </Link>
-          </div>
-        );
-      })}
+    <div className="lg:w-[95%] w-[80%] mx-auto bg-[#0e0d0d] mt-8 rounded-[20px] h-[100%] p-3 pb-10">
+      <h1 className="text-start">Recently Applications</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 place-items-center w-[100%] h-[100%]">
+        {data.map((e) => {
+          return (
+            <div key={e.id} className="w-[100%] rounded-[20px]">
+              <Link href={e.pageUrl}>
+                <div className="w-[100%] h-[250px] bg-orange-500 rounded-[20px]">
+                  <Image
+                    src={e.image[0].imageOne}
+                    className="object-cover rounded-[20px]"
+                  />
+                </div>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
